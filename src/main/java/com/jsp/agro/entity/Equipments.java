@@ -2,7 +2,6 @@ package com.jsp.agro.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,13 +14,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Comment {
+public class Equipments {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String comment;
-	
+	private String name;
+	private int costPerHour;
+	private int quantity;
 	@ManyToOne
 	@JsonIgnore
 	private User user;

@@ -1,29 +1,31 @@
 package com.jsp.agro.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @Entity
-public class Comment {
-	
+public class Rentals {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String comment;
-	
+	private LocalDateTime startTime;
+	private LocalDateTime endtime;
 	@ManyToOne
-	@JsonIgnore
-	private User user;
-
+	private Equipments machinery;
+	@OneToOne
+	private PaymentHistory transactions;
+	
+	
 }

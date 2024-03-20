@@ -5,8 +5,11 @@ import java.util.List;
 import com.jsp.agro.entity.User;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class ResponseStructure<T> {
 
 	private String message;

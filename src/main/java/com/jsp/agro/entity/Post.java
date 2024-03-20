@@ -14,9 +14,10 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-@Data
+@Setter
 @Entity
 public class Post {
 	

@@ -22,6 +22,7 @@ import com.jsp.agro.util.ResponseStructure;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.OverridesAttribute;
 
 @RestControllerAdvice
 public class ExceptionHandlerForUser  extends ResponseEntityExceptionHandler{
@@ -97,6 +98,14 @@ public class ExceptionHandlerForUser  extends ResponseEntityExceptionHandler{
 		return new ResponseEntity<ResponseStructure<String>>(m, HttpStatus.NOT_FOUND);
 	}
 	
+	@ExceptionHandler(EquipmentNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> EquipmentNotFound(EquipmentNotFoundException e) {
+		m.setMessage("comment id not found");
+		m.setStatus(HttpStatus.NOT_FOUND.value());
+		m.setData(e.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(m, HttpStatus.NOT_FOUND);
+	}
+	
 //	@ResponseStatus(HttpStatus.BAD_REQUEST)
 //	@ExceptionHandler(MethodArgumentNotValidException.class)
 //	public ResponseEntity<ResponseStructure<Map<String, String>>> handleValidationExceptions(
@@ -117,7 +126,6 @@ public class ExceptionHandlerForUser  extends ResponseEntityExceptionHandler{
 
 
 	
-	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 		List<ObjectError> error = ex.getAllErrors();

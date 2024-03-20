@@ -59,23 +59,7 @@ public class CommentService {
 			throw new PostNotFoundException();
 	}
 
-//	public ResponseEntity<ResponseStructure<Comment>> deleteComment(int id){
-//		Comment cdata = cdao.fetchById(id);
-//		if(cdata!=null) {
-//				Post pdata = pdao.fetchPostByComment(id);
-//				if(pdata!=null) {
-//					pdata.setComments(null);
-//					pdao.updatePost(pdata);
-//				}
-//			cdao.deleteComment(cdata.getId());
-//			rs.setData(cdata);
-//			rs.setMessage("Comment deleted");
-//			rs.setStatus(HttpStatus.FOUND.value());
-//			return new ResponseEntity<ResponseStructure<Comment>>(rs,HttpStatus.FOUND);
-//		}
-//		else
-//			throw new CommentNotFoundException();
-//	}
+
 
 	public ResponseEntity<ResponseStructure<Comment>> deleteComment(int id) {
 		Comment db = cdao.fetchById(id);
@@ -88,11 +72,10 @@ public class CommentService {
 					pdao.updatePost(p);
 					cdao.deleteComment(id);
 					break;
+					}
 				}
-			}
 			ResponseStructure<Comment> rs = new ResponseStructure<Comment>();
 			rs.setData(db);
-			;
 			rs.setMessage("comment deleted successfully...");
 			rs.setStatus(HttpStatus.FOUND.value());
 			return new ResponseEntity<ResponseStructure<Comment>>(rs, HttpStatus.FOUND);

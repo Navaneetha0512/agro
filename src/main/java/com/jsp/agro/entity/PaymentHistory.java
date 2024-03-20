@@ -1,8 +1,7 @@
 package com.jsp.agro.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,15 +14,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Comment {
-	
+public class PaymentHistory {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String comment;
-	
+	private String modeOfPayment;
+	private LocalDateTime paymentTime;
+	private double amount;
 	@ManyToOne
-	@JsonIgnore
 	private User user;
-
+	
 }
